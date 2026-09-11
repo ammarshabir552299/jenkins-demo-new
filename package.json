@@ -1,0 +1,11 @@
+{
+  "name": "jenkins-demo",
+  "version": "1.0.0",
+  "description": "Simple Jenkins CI/CD demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test.js",
+    "build": "mkdir -p build && cp app.js build/app.js"
+  },
+  "dependencies": {}
+}
