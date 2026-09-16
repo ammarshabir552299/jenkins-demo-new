@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    cp build/app.js /root/jenkins-demo/build/app.js
+                    sudo cp build/app.js /root/jenkins-demo/build/app.js
                     sudo /usr/local/bin/pm2 delete jenkins-demo || true
                     sudo /usr/local/bin/pm2 start /root/jenkins-demo/build/app.js --name jenkins-demo
                     sudo /usr/local/bin/pm2 save
