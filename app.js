@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
 
     res.end(`
         <h1>Hello from Jenkins CI/CD!</h1>
-        <p>Version 4</p>
+        <p>Version 5</p>
     `);
 });
 
