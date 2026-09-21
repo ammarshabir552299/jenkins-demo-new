@@ -30,9 +30,15 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+<<<<<<< HEAD
                     sudo cp build/app.js /root/jenkins-demo/build/app.js
                     sudo /usr/local/bin/pm2 delete jenkins-demo || true
                     sudo /usr/local/bin/pm2 start /root/jenkins-demo/build/app.js --name jenkins-demo
+=======
+                    cp build/app.js /opt/jenkins-demo/build/app.js
+                    sudo /usr/local/bin/pm2 delete jenkins-demo || true
+                    sudo /usr/local/bin/pm2 start /opt/jenkins-demo/build/app.js --name jenkins-demo
+>>>>>>> 5f84706 (Fix Jenkins deployment path)
                     sudo /usr/local/bin/pm2 save
                 '''
             }
@@ -49,4 +55,7 @@ pipeline {
         }
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5f84706 (Fix Jenkins deployment path)
