@@ -1,61 +1,54 @@
 pipeline {
-    agent any
+agent any
 
-    stages {
+```
+stages {
 
-        stage('Checkout') {
-            steps {
-                echo 'Checking out code from GitHub'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'npm test'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh '''
-<<<<<<< HEAD
-                    sudo cp build/app.js /root/jenkins-demo/build/app.js
-                    sudo /usr/local/bin/pm2 delete jenkins-demo || true
-                    sudo /usr/local/bin/pm2 start /root/jenkins-demo/build/app.js --name jenkins-demo
-=======
-                    cp build/app.js /opt/jenkins-demo/build/app.js
-                    sudo /usr/local/bin/pm2 delete jenkins-demo || true
-                    sudo /usr/local/bin/pm2 start /opt/jenkins-demo/build/app.js --name jenkins-demo
->>>>>>> 5f84706 (Fix Jenkins deployment path)
-                    sudo /usr/local/bin/pm2 save
-                '''
-            }
+    stage('Checkout') {
+        steps {
+            echo 'Checking out code from GitHub'
         }
     }
 
-    post {
-        success {
-            echo 'CI/CD PIPELINE SUCCESSFUL'
+    stage('Install Dependencies') {
+        steps {
+            sh 'npm install'
         }
+    }
 
-        failure {
-            echo 'CI/CD PIPELINE FAILED'
+    stage('Test') {
+        steps {
+            sh 'npm test'
+        }
+    }
+
+    stage('Build') {
+        steps {
+            sh 'npm run build'
+        }
+    }
+
+    stage('Deploy') {
+        steps {
+            sh '''
+                cp build/app.js /opt/jenkins-demo/build/app.js
+                sudo /usr/local/bin/pm2 delete jenkins-demo || true
+                sudo /usr/local/bin/pm2 start /opt/jenkins-demo/build/app.js --name jenkins-demo
+                sudo /usr/local/bin/pm2 save
+            '''
         }
     }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 5f84706 (Fix Jenkins deployment path)
+post {
+    success {
+        echo 'CI/CD PIPELINE SUCCESSFUL'
+    }
+
+    failure {
+        echo 'CI/CD PIPELINE FAILED'
+    }
+}
+```
+
+}
